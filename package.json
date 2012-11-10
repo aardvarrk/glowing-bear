@@ -1,0 +1,10 @@
+{
+    "name": "glowing-bear",
+    "description": "High performance message queue.",
+    "keywords": [],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/aardvarrk/glowing-bear.git"
+    },
+    "version": "0.0.1"
+}
