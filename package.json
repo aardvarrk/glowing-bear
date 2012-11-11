@@ -9,5 +9,6 @@
     "dependencies": {
         "coffee-script": "1.4.x"
     },
-    "version": "0.1.0"
+    "main": "main.js",
+    "version": "0.1.1"
 }

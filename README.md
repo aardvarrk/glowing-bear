@@ -34,4 +34,3 @@ To do
 - Add an `on('connect', ...)` method to prevent race
   conditions.
 - Change `onMessage` to `on('message', ...)`.
-- Fix some things related to npm.
