@@ -10,9 +10,9 @@ class Socket
             self._handleConnection(self, c)
         @_socket.listen(port, host)
 
-    connect: (port, host='localhost') ->
+    connect: (port, host='127.0.0.0') ->
         self = this
-        @_socket = net.createConnection port, host, ->
+        @_socket = net.createConnection {port: port, host: host}, ->
             self._handleConnection(self, self._socket)
 
     send: (data) ->
