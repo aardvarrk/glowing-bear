@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Glowing Bear by aardvarrk</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/aardvarrk/glowing-bear">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/aardvarrk/glowing-bear/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/aardvarrk/glowing-bear/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Glowing Bear</h1>
+          <p>Simple messaging library for Node.js.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/aardvarrk">aardvarrk</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <p>Glowing Bear is a simple messaging library for Node.js. It supports
+sending and receiving messages over TCP.</p>
+
+<h2>Usage</h2>
+
+<p>Here is an example of an echo server, which sends any messages it
+receives back to the client. The client prints the messages it receives.</p>
+
+<pre><code>var gb = require('glowing-bear');
+
+var server = new gb.Socket();
+server.bind(3000, '0.0.0.0');
+server.onMessage = function(client, data) {
+    client.send(data);
+};
+
+var client = new gb.Socket();
+client.connect(3000, '127.0.0.1');
+client.onMessage = function(server, data) {
+    console.log(data);
+};
+
+client.send('Hello, world!');
+client.send({some: 'object'});
+client.send([42, 1337, 3.14]);
+</code></pre>
+
+<p>You can send any objects that can be converted to JSON.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
