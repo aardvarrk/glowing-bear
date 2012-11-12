@@ -5,15 +5,13 @@ class Socket
         @_socket = null
 
     bind: (port, host='0.0.0.0') ->
-        self = this
-        @_socket = net.createServer (c) ->
-            self._handleConnection(self, c)
+        @_socket = net.createServer (c) =>
+            @_handleConnection(c)
         @_socket.listen(port, host)
 
     connect: (port, host='127.0.0.0') ->
-        self = this
-        @_socket = net.createConnection {port: port, host: host}, ->
-            self._handleConnection(self, self._socket)
+        @_socket = net.createConnection {port: port, host: host}, =>
+            @_handleConnection(@_socket)
 
     send: (data) ->
         string = JSON.stringify({data: data})
@@ -24,14 +22,14 @@ class Socket
 
         @_socket.write(buffer)
 
-    _handleConnection: (self, c) ->
+    _handleConnection: (c) ->
         client = new Socket()
         client._socket = c
 
         data = null;
         length = null;
 
-        c.on 'data', (d) ->
+        c.on 'data', (d) =>
             if data == null
                 data = d
             else
@@ -52,7 +50,7 @@ class Socket
                     loopp = true if data.length > 0
                     length = null
 
-                    self.onMessage(client, message.data)
+                    @onMessage(client, message.data)
 
 module.exports =
     Socket: Socket
